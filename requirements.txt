@@ -1,0 +1,35 @@
+# Consolidated dependencies for all three sub-projects
+# Install this at the repo root to run tests across all sub-projects.
+
+# Embedding models
+sentence-transformers>=2.7,<3.0
+
+# Numerical / scientific
+numpy>=1.26,<2.0
+scipy>=1.13,<2.0
+scikit-learn>=1.5,<2.0
+
+# Clustering / anomaly detection
+hdbscan>=0.8.33,<0.9
+
+# Graph
+networkx>=3.3,<4.0
+
+# Change-point detection
+ruptures>=1.1,<2.0
+
+# Vector store
+qdrant-client>=1.9,<2.0
+
+# Cache / messaging
+redis>=5.0,<6.0
+
+# API layer
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.29,<1.0
+
+# Observability
+prometheus-client>=0.20,<1.0
+
+# Testing
+pytest>=8.0,<9.0

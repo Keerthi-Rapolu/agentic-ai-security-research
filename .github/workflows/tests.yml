@@ -1,0 +1,77 @@
+name: Tests
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test-rag-corpus-poisoning:
+    name: RAG Corpus Poisoning Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sub-projects/rag-corpus-poisoning
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: sub-projects/rag-corpus-poisoning/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest tests/ -v --tb=short
+
+  test-alignment-monitor:
+    name: Alignment Regression Monitor Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sub-projects/alignment-regression-monitor
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: sub-projects/alignment-regression-monitor/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest tests/ -v --tb=short
+
+  test-multi-agent-trust:
+    name: Multi-Agent Trust Tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sub-projects/multi-agent-trust
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: sub-projects/multi-agent-trust/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest tests/ -v --tb=short
