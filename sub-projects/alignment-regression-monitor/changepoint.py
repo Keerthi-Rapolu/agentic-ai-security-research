@@ -2,6 +2,7 @@
 
 import logging
 from dataclasses import dataclass
+from typing import Optional
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +22,7 @@ class CUSUMResult:
     statistic: float
     mmd2_value: float
     is_alert: bool
-    severity: str | None
+    severity: Optional[str]
     step: int
 
 

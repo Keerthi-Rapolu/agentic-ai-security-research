@@ -2,7 +2,7 @@
 
 import logging
 import random
-from typing import Any, Dict, Tuple
+from typing import Any, Dict, Optional, Tuple
 
 logger = logging.getLogger(__name__)
 
@@ -50,7 +50,7 @@ class OutputSampler:
         random_rate: float = 0.01,
         principle_rate: float = 0.05,
         safety_rate: float = 1.0,
-        seed: int | None = None,
+        seed: Optional[int] = None,
     ) -> None:
         if not (0 <= random_rate <= 1):
             raise ValueError(f"random_rate must be in [0,1]; got {random_rate}")
@@ -65,7 +65,7 @@ class OutputSampler:
         self._rng = random.Random(seed)
 
     def should_sample(
-        self, output: str, context: Dict[str, Any] | None = None
+        self, output: str, context: Optional[Dict[str, Any]] = None
     ) -> Tuple[bool, str]:
         """Decide whether to sample *output* for alignment monitoring.
 
